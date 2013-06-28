@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 import java.util.Set;
 
 @Component
-@Transactional
+@Transactional(readOnly = true)
 public class SiteService implements ISiteService {
 
     @Resource

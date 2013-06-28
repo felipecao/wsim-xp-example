@@ -8,18 +8,12 @@ import javax.persistence.*;
 public class Activity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_ACTIVITY")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SQ_ACTIVITY")
     @Column(name="ACTIVITY_ID")
     private Long id;
 
     @Column(name = "ACTIVITY_NAME", length = 100, nullable = false)
-    private Long name;
-
-    @Column(name = "ACTIVITY_BGCOLOR", length = 7, nullable = false)
-    private String bgColor;
-
-    @Column(name = "ACTIVITY_FONT_COLOR", length = 7, nullable = false)
-    private String fontColor;
+    private String name;
 
     public Long getId() {
         return id;
@@ -29,27 +23,11 @@ public class Activity {
         this.id = id;
     }
 
-    public Long getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(Long name) {
+    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getBgColor() {
-        return bgColor;
-    }
-
-    public void setBgColor(String bgColor) {
-        this.bgColor = bgColor;
-    }
-
-    public String getFontColor() {
-        return fontColor;
-    }
-
-    public void setFontColor(String fontColor) {
-        this.fontColor = fontColor;
     }
 }

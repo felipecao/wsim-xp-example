@@ -1,14 +1,18 @@
 package br.unirio.wsimxp.entity;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="VALUE")
 @SequenceGenerator(name = "SQ_VALUE", sequenceName = "SQ_VALUE")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Value {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_VALUE")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SQ_VALUE")
     @Column(name="VALUE_ID")
     private Long id;
 
@@ -16,6 +20,7 @@ public class Value {
     private String value;
 
     @ManyToOne
+    @XmlTransient
     private Scenario scenario;
 
     public Long getId() {

@@ -1,23 +1,26 @@
 package br.unirio.wsimxp.entity;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="SCENARIO")
 @SequenceGenerator(name = "SQ_SCENARIO", sequenceName = "SQ_SCENARIO")
 public class Scenario {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_SCENARIO")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SQ_SCENARIO")
     @Column(name="SCENARIO_ID")
     private Long id;
 
     @Column(name = "SCENARIO_NAME", length = 100, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "scenario")
-    private List<Value> values = new ArrayList<Value>();
+    @OneToMany(mappedBy = "scenario", fetch = FetchType.EAGER)
+    private Set<Value> values = new HashSet<Value>();
 
     public Long getId() {
         return id;
@@ -35,11 +38,11 @@ public class Scenario {
         this.name = name;
     }
 
-    public List<Value> getValues() {
+    public Set<Value> getValues() {
         return values;
     }
 
-    public void setValues(List<Value> values) {
+    public void setValues(Set<Value> values) {
         this.values = values;
     }
 }

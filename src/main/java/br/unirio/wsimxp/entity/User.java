@@ -3,13 +3,13 @@ package br.unirio.wsimxp.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="USER")
+@Table(name = "USER")
 @SequenceGenerator(name = "SQ_USER", sequenceName = "SQ_USER")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SQ_USER")
-    @Column(name="USER_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SQ_USER")
+    @Column(name = "USER_ID")
     private Long id;
 
     @Column(name = "USER_LOGIN", length = 100, nullable = false)
