@@ -53,3 +53,15 @@ Acceptance Criteria
     When "admin" user requests his sites  
     Then response size is not larger than "500"KB  
 
+PROBLEMS FOUND
+==============
+- acceptance criteria (especially non-functional) are not guaranteed by the final product
+- software construction is done without associated unit tests, unlike XP's guidelines, which causes such a high number of bugs (below)
+- bug: No Hibernate Session bound to thread, and configuration does not allow creation of non-transactional one here
+- bug: No bean named 'transactionManager' is defined
+- bug: LazyInitializationException: failed to lazily initialize a collection of role: br.unirio.wsimxp.entity.Scenario.values
+- bug: LazyInitializationException: failed to lazily initialize a collection of role: br.unirio.wsimxp.entity.Site.activities, no session or session was closed
+- bug: MultipleBagFetchException: cannot simultaneously fetch multiple bags
+- bug: SAXException2: A cycle is detected in the object graph. This will cause infinitely deep XML: br.unirio.wsimxp.entity.Scenario@3c7892f1 -> br.unirio.wsimxp.entity.Value@ff72b3b -> br.unirio.wsimxp.entity.Scenario@3c7892f1
+- bug: scenario's values are not displayed
+- bug (again): SAXException2: A cycle is detected in the object graph. This will cause infinitely deep XML: br.unirio.wsimxp.entity.Scenario@3c7892f1 -> br.unirio.wsimxp.entity.Value@ff72b3b -> br.unirio.wsimxp.entity.Scenario@3c7892f1
